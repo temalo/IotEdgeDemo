@@ -106,6 +106,21 @@ class DisplayManager(object):
         ]
         return logo
 
+    def __coke(self):
+        N = Colors.Nothing.value
+        R = Colors.Red.value
+        logo = [
+        N, N, N, R, R, R, R, R,
+        N, N, R, N, N, R, N, N,
+        N, R, N, N, N, N, N, N,
+        R, N, N, N, N, N, N, N,
+        R, N, N, N, N, N, N, N,
+        N, R, N, N, N, N, N, N,
+        N, N, R, N, N, N, N, N,
+        N, N, N, R, R, R, R, R,
+        ]
+        return logo
+
     def __init__(self):
         self.s = SenseHat()
         self.s.low_light = True
@@ -128,6 +143,8 @@ class DisplayManager(object):
             self.__displayImage(self.__orange())
         elif 'lemon' in strImage.lower():
             self.__displayImage(self.__lemon())
+        elif 'coke' in strImage.lower():
+            self.__displayImage(self.__coke())    
         elif 'none' in strImage.lower():
             self.s.clear()
         else:
