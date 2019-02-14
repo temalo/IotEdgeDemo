@@ -3,4 +3,5 @@ Coke
 Coke Zero
 Diet Coke
 Dr. Pepper
+Hint Water
 Pepsi
