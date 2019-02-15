@@ -146,7 +146,7 @@ class DisplayManager(object):
         elif 'coke' in strImage.lower():
             self.__displayImage(self.__coke())    
         elif 'none' in strImage.lower():
-            self.__displayImage(self.__unknown
+            self.__displayImage(self.__unknown())    
         else:
             self.__displayImage(self.__unknown())
             time.sleep(2)
