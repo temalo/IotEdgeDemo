@@ -3,8 +3,14 @@ class MessageParser:
     def highestProbabilityTagMeetingThreshold(self, allTagsAndProbability, threshold):
         highestProbabilityTag = 'none'
         highestProbability = 0
-        for item in allTagsAndProbability.iteritems():
-            if item['Probability'] > highestProbability and item['Probability'] > threshold:
-                highestProbability = item['Probability']
-                highestProbabilityTag = item['Tag']
+        #print(allTagsAndProbability)
+        for value in allTagsAndProbability['predictions']:
+            #print(value['tagName'])
+            #print(value['probability'])
+            if value['probability'] > highestProbability and value['probability'] > threshold:
+                highestProbability=value['probability']
+                highestProbabilityTag=value['tagName']
+            #if item['Probability'] > highestProbability and item['Probability'] > threshold:
+             #   highestProbability = item['Probability']
+             #   highestProbabilityTag = item['Tag']
         return highestProbabilityTag

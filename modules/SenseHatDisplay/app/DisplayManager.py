@@ -110,14 +110,45 @@ class DisplayManager(object):
         N = Colors.Nothing.value
         R = Colors.Red.value
         logo = [
-        N, N, N, R, R, R, R, R,
-        N, N, R, N, N, R, N, N,
-        N, R, N, N, N, N, N, N,
-        R, N, N, N, N, N, N, N,
-        R, N, N, N, N, N, N, N,
-        N, R, N, N, N, N, N, N,
-        N, N, R, N, N, N, N, N,
-        N, N, N, R, R, R, R, R,
+        N, N, N, N, N, N, N, N,
+        N, N, R, R, R, R, N, N,
+        N, R, R, N, N, R, R, N,
+        N, R, R, N, N, N, N, N,
+        N, R, R, N, N, N, N, N,
+        N, R, R, N, N, N, N, N,
+        N, R, R, N, N, R, R, N,
+        N, N, R, R, R, R, N, N,
+        ]
+        return logo
+    
+    def __pepsi(self):
+        N = Colors.Nothing.value
+        B = Colors.Blue.value
+        logo = [
+        N, N, N, N, N, N, N, N,
+        N, B, B, B, B, B, N, N,
+        N, B, B, N, N, B, B, N,
+        N, B, B, N, N, B, B, N,
+        N, B, B, N, N, B, B, N,
+        N, B, B, B, B, B, N, N,
+        N, B, B, N, N, N, N, N,
+        N, B, B, N, N, N, N, N,
+        ]
+        return logo    
+
+    def __hintWater(self):
+        N = Colors.Nothing.value
+        R = Colors.Red.value
+        P = Colors.Pink.value
+        logo = [
+        P, P, N, N, N, N, N, N,
+        P, P, N, N, N, N, N, N,
+        P, P, N, N, N, N, N, N,
+        P, P, N, N, N, N, N, N,
+        P, P, P, P, P, P, N, N,
+        P, P, N, N, N, P, N, N,
+        P, P, N, N, N, P, N, N,
+        P, P, N, N, N, P, N, N,
         ]
         return logo
 
@@ -125,7 +156,7 @@ class DisplayManager(object):
         self.s = SenseHat()
         self.s.low_light = True
         self.__displayImage(self.__raspberry())#Flash the raspberry pi logo at initialization
-        time.sleep(1)
+        time.sleep(2)
         self.s.clear()
 
     def __displayImage(self, image):
@@ -144,7 +175,11 @@ class DisplayManager(object):
         elif 'lemon' in strImage.lower():
             self.__displayImage(self.__lemon())
         elif 'coke' in strImage.lower():
-            self.__displayImage(self.__coke())    
+            self.__displayImage(self.__coke())
+        elif 'hint' in strImage.lower():
+            self.__displayImage(self.__hintWater())
+        elif 'pepsi' in strImage.lower():
+            self.__displayImage(self.__pepsi())             
         elif 'none' in strImage.lower():
             self.__displayImage(self.__unknown())    
         else:
