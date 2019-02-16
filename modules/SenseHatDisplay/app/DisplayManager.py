@@ -138,7 +138,6 @@ class DisplayManager(object):
 
     def __hintWater(self):
         N = Colors.Nothing.value
-        R = Colors.Red.value
         P = Colors.Pink.value
         logo = [
         P, P, N, N, N, N, N, N,
@@ -154,13 +153,20 @@ class DisplayManager(object):
 
     def __init__(self):
         self.s = SenseHat()
-        self.s.low_light = True
+        self.s.set_rotation(90)
         self.__displayImage(self.__raspberry())#Flash the raspberry pi logo at initialization
-        time.sleep(2)
+        time.sleep(5)
         self.s.clear()
+        self.s.low_light = False
+        self.s.show_message("Azure IoT Edge and AI" , text_colour=[0,0,255])
+        time.sleep(5)
+
 
     def __displayImage(self, image):
         self.s.set_pixels(image)
+
+    def __displayMessage(self,message, textcolor):
+        self.s.show_message(message, text_colour=textcolor)
 
     def displayImage(self, strImage):
         print("Displaying " + strImage)
@@ -183,7 +189,7 @@ class DisplayManager(object):
         elif 'none' in strImage.lower():
             self.__displayImage(self.__unknown())    
         else:
-            self.__displayImage(self.__unknown())
-            time.sleep(2)
+            self.__displayMessage("I am not trained for that object!", Colors.Red.value)
+            time.sleep(5)
             self.s.clear()
 
